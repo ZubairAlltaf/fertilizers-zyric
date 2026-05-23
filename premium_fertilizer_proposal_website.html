@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Zubair — Digital Commerce Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0d0f0d;
+      --card:#141814;
+      --soft:#1b201b;
+      --text:#f5f5f2;
+      --muted:#9ca39b;
+      --line:#242924;
+      --accent:#8fbf73;
+      --accent-soft:#1f2b1d;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Inter',sans-serif;
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    section{
+      padding:110px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,var(--accent-soft),transparent 70%);
+      top:-300px;
+      right:-200px;
+      opacity:.8;
+    }
+
+    .topbar{
+      position:absolute;
+      top:30px;
+      left:0;
+      width:100%;
+    }
+
+    .topbar-inner{
+      width:min(1180px,92%);
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .brand{
+      font-size:14px;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .tag{
+      padding:10px 18px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+      background:rgba(255,255,255,.02);
+      backdrop-filter:blur(8px);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:80px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-size:12px;
+      margin-bottom:22px;
+    }
+
+    h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(58px,8vw,110px);
+      line-height:.95;
+      letter-spacing:-.04em;
+      margin-bottom:30px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:18px;
+      max-width:640px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,#171c17,#101210);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:38px;
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+
+    .mini-label{
+      font-size:12px;
+      letter-spacing:.2em;
+      color:var(--muted);
+      text-transform:uppercase;
+      margin-bottom:24px;
+    }
+
+    .hero-stat{
+      padding:22px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero-stat:last-child{
+      border:none;
+      padding-bottom:0;
+    }
+
+    .hero-stat h3{
+      font-size:44px;
+      margin-bottom:6px;
+      font-weight:600;
+    }
+
+    .hero-stat p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .section-head{
+      margin-bottom:70px;
+      max-width:760px;
+    }
+
+    .section-head span{
+      color:var(--accent);
+      font-size:12px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      display:block;
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(42px,5vw,72px);
+      line-height:1;
+      letter-spacing:-.04em;
+      margin-bottom:22px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      font-size:17px;
+      max-width:720px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:32px;
+      transition:.35s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:#313831;
+    }
+
+    .card h3{
+      font-size:22px;
+      margin-bottom:16px;
+    }
+
+    .card p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .list-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:26px;
+    }
+
+    .list-box{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:36px;
+    }
+
+    .list-box h3{
+      margin-bottom:24px;
+      font-size:24px;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    li{
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    li:last-child{
+      border:none;
+      padding-bottom:0;
+    }
+
+    .pricing{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:28px;
+    }
+
+    .price-card{
+      background:linear-gradient(180deg,#171c17,#121512);
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:42px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .price-card::before{
+      content:'';
+      position:absolute;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle,var(--accent-soft),transparent 70%);
+      top:-120px;
+      right:-80px;
+    }
+
+    .price-card span{
+      color:var(--accent);
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:.18em;
+      display:block;
+      margin-bottom:18px;
+    }
+
+    .price-card h3{
+      font-size:54px;
+      line-height:1;
+      margin-bottom:18px;
+    }
+
+    .price-card p{
+      color:var(--muted);
+      margin-bottom:30px;
+    }
+
+    .timeline{
+      display:flex;
+      gap:26px;
+      margin-top:26px;
+    }
+
+    .time-pill{
+      border:1px solid var(--line);
+      padding:14px 20px;
+      border-radius:999px;
+      color:var(--text);
+      background:rgba(255,255,255,.02);
+    }
+
+    .footer{
+      padding:90px 0;
+      text-align:center;
+    }
+
+    .footer h2{
+      font-family:'Playfair Display',serif;
+      font-size:62px;
+      margin-bottom:24px;
+      letter-spacing:-.04em;
+    }
+
+    .footer p{
+      color:var(--muted);
+      max-width:760px;
+      margin:auto;
+      font-size:17px;
+    }
+
+    .signature{
+      margin-top:48px;
+      color:var(--text);
+      font-size:20px;
+      font-weight:600;
+    }
+
+    .signature small{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:400;
+    }
+
+    @media(max-width:980px){
+      .hero-grid,
+      .grid,
+      .pricing,
+      .list-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:72px;
+      }
+
+      .section-head h2{
+        font-size:54px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Muhammad Zubair</div>
+    <div class="tag">Web · Flutter · Automation</div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="eyebrow">Modern Digital Commerce Platform</div>
+      <h1>Built for Modern Fertilizer Businesses.</h1>
+      <p>
+        A complete digital ordering ecosystem designed for fertilizer distributors and businesses in Pakistan — including a fully custom website, mobile application, advanced admin dashboard, product management system, order management, pricing controls, delivery handling, and business operations management.
+      </p>
+    </div>
+
+    <div class="hero-card">
+      <div class="mini-label">Core Capabilities</div>
+
+      <div class="hero-stat">
+        <h3>100%</h3>
+        <p>Custom coded platform with complete admin-side control.</p>
+      </div>
+
+      <div class="hero-stat">
+        <h3>2+</h3>
+        <p>Years of experience building scalable digital systems.</p>
+      </div>
+
+      <div class="hero-stat">
+        <h3>24/7</h3>
+        <p>Online ordering access for customers across devices.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-head">
+      <span>Developer</span>
+      <h2>Muhammad Zubair</h2>
+      <p>
+        Web & Flutter App Developer and Automation Builder specializing in scalable business systems, modern admin dashboards, custom ordering platforms, mobile applications, and automation solutions for local and international businesses.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Custom Web Systems</h3>
+        <p>Modern responsive platforms built completely from scratch without templates or page builders.</p>
+      </div>
+
+      <div class="card">
+        <h3>Flutter Applications</h3>
+        <p>High-performance Android and iOS applications with clean UI and scalable architecture.</p>
+      </div>
+
+      <div class="card">
+        <h3>Automation Solutions</h3>
+        <p>Business workflow automation systems improving operations and management efficiency.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-head">
+      <span>Website Features</span>
+      <h2>Customer Experience Platform</h2>
+      <p>
+        A fully responsive ordering website enabling customers to browse fertilizer products, place orders online, track order progress, and communicate directly with the business.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Product Management</h3>
+        <p>Customers can browse products, check pricing, view details, and see availability status instantly.</p>
+      </div>
+
+      <div class="card">
+        <h3>Delivery Controls</h3>
+        <p>Different delivery charges can be configured for different products directly from the admin dashboard.</p>
+      </div>
+
+      <div class="card">
+        <h3>Delivery Availability</h3>
+        <p>Admin can enable or disable delivery options on selected products anytime.</p>
+      </div>
+
+      <div class="card">
+        <h3>Online Orders</h3>
+        <p>Customers can place orders directly through the website without contacting manually.</p>
+      </div>
+
+      <div class="card">
+        <h3>Order Tracking</h3>
+        <p>Users can check order status, confirmations, and progress updates in real time.</p>
+      </div>
+
+      <div class="card">
+        <h3>Payments</h3>
+        <p>JazzCash and Easypaisa payment support with payment screenshot upload system.</p>
+      </div>
+
+      <div class="card">
+        <h3>WhatsApp Integration</h3>
+        <p>Direct WhatsApp communication integration for faster customer support and inquiries.</p>
+      </div>
+
+      <div class="card">
+        <h3>Dealership Pages</h3>
+        <p>Separate dealership information pages including details, contact information, and company information.</p>
+      </div>
+
+      <div class="card">
+        <h3>Responsive Design</h3>
+        <p>Optimized for mobile phones, tablets, laptops, and desktop devices.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-head">
+      <span>Admin Dashboard</span>
+      <h2>Complete Business Control</h2>
+      <p>
+        Almost every section of the platform can be controlled directly from the admin panel without requiring development changes.
+      </p>
+    </div>
+
+    <div class="list-grid">
+
+      <div class="list-box">
+        <h3>Product & Website Management</h3>
+        <ul>
+          <li>Add / Edit / Delete products</li>
+          <li>Update product prices anytime</li>
+          <li>Enable or disable products</li>
+          <li>Manage delivery charges</li>
+          <li>Enable delivery on selected products</li>
+          <li>Update website banners & images</li>
+          <li>Update company logo</li>
+          <li>Manage WhatsApp number</li>
+          <li>Edit dealership information</li>
+          <li>Manage website pages & content</li>
+        </ul>
+      </div>
+
+      <div class="list-box">
+        <h3>Order & Business Operations</h3>
+        <ul>
+          <li>View customer orders</li>
+          <li>Confirm payment screenshots</li>
+          <li>Update order statuses</li>
+          <li>Track today’s orders</li>
+          <li>View weekly/monthly analytics</li>
+          <li>Monitor order history</li>
+          <li>Create one sub-admin account</li>
+          <li>Manage customer requests</li>
+          <li>Secure dashboard access</li>
+          <li>Complete operational control</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-head">
+      <span>Mobile Application</span>
+      <h2>Dedicated Mobile Experience</h2>
+      <p>
+        A Flutter-based mobile application designed for returning customers, improved retention, and direct communication through push notifications.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Push Notifications</h3>
+        <p>Send deals, promotions, new products, and updates directly to customers.</p>
+      </div>
+
+      <div class="card">
+        <h3>Faster Repeat Orders</h3>
+        <p>Customers can reorder instantly through the installed application.</p>
+      </div>
+
+      <div class="card">
+        <h3>Order Tracking</h3>
+        <p>Track orders, history, and updates directly from the mobile app.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-head">
+      <span>Timeline & Pricing</span>
+      <h2>Project Investment</h2>
+      <p>
+        Transparent development pricing, operational costs, and estimated delivery timelines.
+      </p>
+    </div>
+
+    <div class="pricing">
+
+      <div class="price-card">
+        <span>Website Development</span>
+        <h3>PKR 120K–180K</h3>
+        <p>
+          Complete custom website, admin dashboard, backend integration, payment systems, order management, and deployment.
+        </p>
+
+        <div class="timeline">
+          <div class="time-pill">1.5 Months</div>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span>Mobile Application</span>
+        <h3>PKR 180K–350K</h3>
+        <p>
+          Flutter mobile application with notifications, ordering system, and backend integration.
+        </p>
+
+        <div class="timeline">
+          <div class="time-pill">2 Months</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="list-grid" style="margin-top:28px;">
+
+      <div class="list-box">
+        <h3>Operational Costs</h3>
+        <ul>
+          <li>Domain: PKR 3K–6K yearly</li>
+          <li>Hosting & Server: PKR 8K–25K yearly</li>
+          <li>Google Play Store Fee: $25 one-time</li>
+          <li>Apple App Store Fee: $99 yearly (optional)</li>
+          <li>Supabase backend starts free for smaller businesses</li>
+        </ul>
+      </div>
+
+      <div class="list-box">
+        <h3>Optional Maintenance</h3>
+        <ul>
+          <li>Website maintenance support</li>
+          <li>Mobile app updates</li>
+          <li>Bug fixing & monitoring</li>
+          <li>Server monitoring</li>
+          <li>Technical assistance & updates</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="footer">
+  <div class="container">
+    <h2>Designed to Scale With Your Business.</h2>
+    <p>
+      A complete modern digital commerce solution designed for operational efficiency, better customer experience, and scalable business growth.
+    </p>
+
+    <div class="signature">
+      Muhammad Zubair
+      <small>Web & Flutter App Developer · Automation Builder</small>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
